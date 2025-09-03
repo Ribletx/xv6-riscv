@@ -24,4 +24,4 @@
 ![Comando ls](ls_Cristobal.png)
 ![Comando echo "Hola xv6"](echo_Holaxv6_Cristobal.png)
 ![Comando cat README](cat_README_Cristobal.png)
-
+![Comandos y ejecucion (Diego)](https://github.com/user-attachments/assets/f576c4ce-f395-4bef-b609-f7770ff8245e)
