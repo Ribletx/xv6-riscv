@@ -26,5 +26,6 @@
 <img width="325" height="470" alt="ls_Cristobal" src="https://github.com/user-attachments/assets/2d7eca66-073e-4c83-9148-7fa085c5821b" />
 <img width="1477" height="280" alt="xv6_funcionando_Cristobal" src="https://github.com/user-attachments/assets/87c9de39-bbde-4372-8c6f-b6de8d3f3c22" />
 
+
 - Confirmación de funcionamiento (Diego)
 ![Comandos y ejecucion (Diego)](https://github.com/user-attachments/assets/acf60e6e-bcc3-4d12-a9de-12a20e357164)
