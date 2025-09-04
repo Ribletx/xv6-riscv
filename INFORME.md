@@ -2,7 +2,7 @@
 
 ## Datos
 - Integrantes: _Cristóbal Salgado_ / _Diego Gajardo_
-- Usuario GitHub: _Ribletx_ / _x_
+- Usuario GitHub: _Ribletx_ / _Wajax8_
 - Rama usada: `grupo_tI`
 
 ## 1. Pasos seguidos para instalar xv6
@@ -20,9 +20,11 @@
 - (Diego) En mi caso tuve un problema, debido a que me habia olvidado de mi contraseña de linux, por lo que tuve que investigar como poder entrar como usuario root y poder cambiar la contraseña.
 
 ## 3. Confirmación de funcionamiento
+- Confirmación de funcionamiento (Cristóbal)
 <img width="591" height="751" alt="cat_README_Cristobal" src="https://github.com/user-attachments/assets/f7b2efb1-151f-4087-bcae-fd3e69f6ebe7" />
 <img width="183" height="60" alt="echo_Holaxv6_Cristobal" src="https://github.com/user-attachments/assets/a89d2d88-1099-43a3-be89-46fe562f11a5" />
 <img width="325" height="470" alt="ls_Cristobal" src="https://github.com/user-attachments/assets/2d7eca66-073e-4c83-9148-7fa085c5821b" />
 <img width="1477" height="280" alt="xv6_funcionando_Cristobal" src="https://github.com/user-attachments/assets/87c9de39-bbde-4372-8c6f-b6de8d3f3c22" />
 
+- Confirmación de funcionamiento (Diego)
 ![Comandos y ejecucion (Diego)](https://github.com/user-attachments/assets/acf60e6e-bcc3-4d12-a9de-12a20e357164)
