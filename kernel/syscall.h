@@ -20,3 +20,8 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+
+// NUEVO getppid
+#define SYS_getppid 22
+// NUEVO getancestor
+#define SYS_getancestor 23
