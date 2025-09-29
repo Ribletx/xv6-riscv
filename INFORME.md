@@ -39,16 +39,21 @@ make qemu -> usa QEMU para emular y ejecutar el xv6 compilado
 
 ## Problemas encontrados y soluciones
 - Dificultades para crear la funcion yosoytupadre: resulto ser un problema con la direccion y se resolvio agregando kernel/ (basandome en zombie.c)
-_FOTO_
+
+<img width="688" height="199" alt="Problema direccion" src="https://github.com/user-attachments/assets/283bf739-a640-478d-af9a-093eb49f8bc4" />
 
 - Error al intentar compilar la funcion getancestor: resulto ser un problema de versiones, ya que al intentar utilizar ChatGPT crea la logica basandose en una version de xv6 del MIT que tiene una version diferente a la implementada
-_FOTO_
+
+<img width="714" height="117" alt="Error getancestor" src="https://github.com/user-attachments/assets/b14a0c4f-e6d5-481e-9b80-9c952f4a3271" />
 
 - Una dificultad adicional fue entender la tarea y donde encontrar los diferentes archivos y logicas que habia que modificar, pero gracias a los prompts correctos ChatGPT se volvio una herramienta muy util para poder realizar y entender la tarea
+
 ## 4. Confirmación de funcionamiento
 - Confirmación de funcionamiento de funcion getppid en yosoytupadre:
-_FOTO_
+
+<img width="325" height="71" alt="Yosoytupadre" src="https://github.com/user-attachments/assets/d33ccce6-e8e9-4ee0-8d2b-00328d2b7850" />
 
 - Confirmación del funcionamiento de funcion getancestor:
-_FOTO_
+
+<img width="321" height="130" alt="imtupadre" src="https://github.com/user-attachments/assets/b40ea369-6833-4446-bcda-c25cac1c7d99" />
 
