@@ -7,11 +7,19 @@
 
 ## 1. Pasos seguidos:
 
-1. 
+1. En el archivo `proc.h` se añadio la variable de `tickets`
+2. En el archivo `proc.h` se añadio la variable de `run_slices`
+3. En el archivo `proc.c` se añadio en la funcion `allocproc` los valores iniciales para ambas variables, 100 para tickets y 0 para run_slices
+4. En el archivo `user.h` declaramos la variable `settickets`
+5. En el archivo `usys.pl` añadimos `entry("settickets")` para declarar la llamada a systema
+6. En el archivo `syscall.h` se definió la entrada al proximo ticket libre
+7. 
 
+## Promp de ChatGPT, IA usada como asesoramiento:
+https://chatgpt.com/share/69029d23-2ae8-8004-b0e5-d79490f836fa
 
 ## Problemas encontrados y soluciones:
-- 
+- ChatGPT considera una version diferente de xv6 a la hora de procesar la ayuda, en el paso 5 las entradas estaban declaradas de forma diferente por la diferencia de versión, pero luego de un poco de investigación y explorar los archivos de xv6 se logro resolver el desajuste de versión
 
 
 ## 4. Confirmación de funcionamiento:

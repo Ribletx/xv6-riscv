@@ -146,6 +146,10 @@ found:
   p->context.ra = (uint64)forkret;
   p->context.sp = p->kstack + PGSIZE;
 
+  // Inicializacion de variables para lotery scheduling
+  p->tickets = 100;   // valor inicial por defecto
+  p->run_slices = 0;
+
   return p;
 }
 
