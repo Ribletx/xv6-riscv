@@ -33,4 +33,5 @@ https://chatgpt.com/share/69029d23-2ae8-8004-b0e5-d79490f836fa
 
 ## 4. Confirmación de funcionamiento:
 
-a
+<img width="1238" height="795" alt="image" src="https://github.com/user-attachments/assets/f698defb-90b4-4c1f-ab19-bd2e55652357" />
+
