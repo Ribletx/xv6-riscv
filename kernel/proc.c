@@ -699,3 +699,12 @@ settickets(int n)
   release(&p->lock);
   return 0;
 }
+
+static unsigned long rnd_seed = 123456789;
+
+int
+krand(void)
+{
+  rnd_seed = rnd_seed * 1103515245 + 12345;
+  return (int)((rnd_seed >> 1) & 0x7fffffff);
+}
