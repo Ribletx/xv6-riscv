@@ -13,7 +13,8 @@
 4. En el archivo `user.h` declaramos la variable `settickets`
 5. En el archivo `usys.pl` añadimos `entry("settickets")` para declarar la llamada a systema
 6. En el archivo `syscall.h` se definió la entrada al proximo ticket libre
-7. 
+7. En el archivo 'sysproc.c' se implemento 'sys_settickets(void)' el cual llama al kernel para asignar un tucket al proceso actual
+8. En el archivo 'proc.c'  se implementa el 'settickets(int n)'
 
 ## Promp de ChatGPT, IA usada como asesoramiento:
 https://chatgpt.com/share/69029d23-2ae8-8004-b0e5-d79490f836fa

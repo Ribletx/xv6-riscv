@@ -689,3 +689,13 @@ procdump(void)
     printf("\n");
   }
 }
+
+int
+settickets(int n)
+{
+  struct proc *p = myproc();
+  acquire(&p->lock);     // si XV6 usa locks por proc
+  p->tickets = (n < 1) ? 1 : n;
+  release(&p->lock);
+  return 0;
+}
