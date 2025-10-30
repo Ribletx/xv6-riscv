@@ -33,4 +33,4 @@ https://chatgpt.com/share/69029d23-2ae8-8004-b0e5-d79490f836fa
 
 ## 4. Confirmación de funcionamiento:
 
-[Aquí puedes agregar capturas de pantalla, resultados de pruebas, o descripción de cómo verificaste que el scheduler funciona correctamente]
+a
