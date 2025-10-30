@@ -32,6 +32,9 @@ https://chatgpt.com/share/69029d23-2ae8-8004-b0e5-d79490f836fa
 - **Error en Makefile:** Tras definir la función de prueba `Demo.c`, no se definió correctamente en el `Makefile`, por lo que al intentar ejecutarla daba error. Se solucionó agregando la entrada correspondiente en el Makefile.
 
 ## 4. Confirmación de funcionamiento:
+Confirmación del funcionamiento en ambos equipos:
 
 <img width="1238" height="795" alt="image" src="https://github.com/user-attachments/assets/f698defb-90b4-4c1f-ab19-bd2e55652357" />
 
+
+<img width="1166" height="439" alt="Captura de pantalla 2025-10-30 012436" src="https://github.com/user-attachments/assets/8bf50475-5f04-457a-9a1e-c43d59a4c92d" />
