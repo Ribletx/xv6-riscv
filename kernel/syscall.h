@@ -22,4 +22,4 @@
 #define SYS_close  21
 
 // lotery scheduling syscall number
-#define SYS_settickets <next_free_number>
+#define SYS_settickets 22
