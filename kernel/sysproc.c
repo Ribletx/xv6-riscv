@@ -110,8 +110,13 @@ uint64
 sys_settickets(void)
 {
   int n;
-  if(argint(0, &n) < 0)
-    return -1;
-  if(n < 1) n = 1;
-  return settickets(n);
+  argint(0, &n);
+
+  if(n < 1)
+    n = 1;
+
+  struct proc *p = myproc();
+  p->tickets = n;
+
+  return 0;
 }

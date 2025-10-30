@@ -422,6 +422,16 @@ kwait(uint64 addr)
 //  - swtch to start running that process.
 //  - eventually that process transfers control
 //    via swtch back to the scheduler.
+
+static unsigned long rnd_seed = 123456789;
+
+int
+krand(void)
+{
+  rnd_seed = rnd_seed * 1103515245 + 12345;
+  return (int)((rnd_seed >> 1) & 0x7fffffff);
+}
+
 void
 scheduler(void)
 {
@@ -725,13 +735,4 @@ settickets(int n)
   p->tickets = (n < 1) ? 1 : n;
   release(&p->lock);
   return 0;
-}
-
-static unsigned long rnd_seed = 123456789;
-
-int
-krand(void)
-{
-  rnd_seed = rnd_seed * 1103515245 + 12345;
-  return (int)((rnd_seed >> 1) & 0x7fffffff);
 }

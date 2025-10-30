@@ -8,23 +8,32 @@ int
 main(int argc, char *argv[])
 {
   int i;
-  for(i=0;i<N;i++){
+  printf("=== Iniciando prueba Lottery Scheduling ===\n");
+  
+  for(i=0; i<N; i++){
     if(fork() == 0){
       int t = 50 * (i + 1);
       settickets(t);
+      printf("Proceso %d: PID=%d, tickets=%d iniciado\n", i, getpid(), t);
+      
       volatile unsigned long x = 0;
-      for(;;){
-        for(unsigned long j=0;j<1000000UL;j++) x += j;
-        if(x % 10000000UL == 0) {
-          printf("pid %d doing work, tickets=%d\n", getpid(), t);
+      // Cambia el bucle infinito por uno con límite
+      for(unsigned long iterations=0; iterations<100; iterations++){
+        for(unsigned long j=0; j<1000000UL; j++) {
+          x += j;
         }
       }
+      
+      printf("Proceso %d (PID=%d, tickets=%d) terminado\n", i, getpid(), t);
       exit(0);
     }
   }
 
-  for(i=0;i<N;i++){
+  // Padre espera a todos los hijos
+  for(i=0; i<N; i++){
     wait(0);
   }
+  
+  printf("=== Prueba completada ===\n");
   exit(0);
 }
