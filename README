@@ -18,7 +18,7 @@
 9. En el archivo `syscall.c` se añadio la funcion de llamada al sistema
 10. En el archivo `proc.c` se añadio un `krand` el cual es un generador en el kernel
 11. En el archivo `proc.c` se modifico `scheduler(void)` que es el cambio de RR a Lottery
-
+12. Creacion de programa de prueba 'Demo.c'
 
 ## Promp de ChatGPT, IA usada como asesoramiento:
 https://chatgpt.com/share/69029d23-2ae8-8004-b0e5-d79490f836fa
