@@ -1,4 +1,4 @@
-# INFORME — Tarea 3: Protección de lectura en XV6
+# INFORME — Tarea 3: Protección de lectura en XV6.
 
 ## Datos:
 - **Integrantes:** Cristóbal Salgado / Diego Gajardo
