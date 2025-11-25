@@ -56,3 +56,5 @@ Solución: Utilizar la IA como una herramienta de apoyo y no como un sustituto p
 Solución: Cambiar el nombre reduciéndolo aún más. Puede ser un poco menos claro, pero cumple con el formato.
 
 ## 5. Confirmación de funcionamiento:
+Cristobal Salgado:
+<img width="278" height="92" alt="image" src="https://github.com/user-attachments/assets/c432f35f-1419-4c81-88c7-f122168fabda" />
