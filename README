@@ -1,48 +1,58 @@
-xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
-Version 6 (v6).  xv6 loosely follows the structure and style of v6,
-but is implemented for a modern RISC-V multiprocessor using ANSI C.
+# INFORME — Tarea 3: Protección de lectura en XV6
 
-ACKNOWLEDGMENTS
+## Datos:
+- **Integrantes:** Cristóbal Salgado / Diego Gajardo
+- **Usuario GitHub:** Ribletx / Wajax8
+- **Rama usada:** `Grupo_I_T3`
 
-xv6 is inspired by John Lions's Commentary on UNIX 6th Edition (Peer
-to Peer Communications; ISBN: 1-57398-013-7; 1st edition (June 14,
-2000)).  See also https://pdos.csail.mit.edu/6.1810/, which provides
-pointers to on-line resources for v6.
+## 1. Desarrollo y pasos realizados:
+1. Declaramos el numero de las Syscall en `kernel/syscall.h`
+2. Registramos las nuevas Syscall en `kernel/syscall.c`, primero declarando la funcion y luego añadiendolas a la tabla `Syscalls[]`
+3. En `kernel/sysproc.c` implementamos las metodologias que leen los argumentos y llaman a las funciones reales
+4. Añandimos las llamadas de usuario de las funciones que definimos en `user/usys.pl`
+5. Declaramos el espacio de usuario en `user/user.h`
 
-The following people have made contributions: Russ Cox (context switching,
-locking), Cliff Frey (MP), Xiao Yu (MP), Nickolai Zeldovich, and Austin
-Clements.
+Luego de definir las funciones, debemos ajustra el comportamiento de estas
 
-We are also grateful for the bug reports and patches contributed by
-Abhinavpatel00, Takahiro Aoyagi, Marcelo Arroyo, Hirbod Behnam, Silas
-Boyd-Wickizer, Anton Burtsev, carlclone, Ian Chen, clivezeng, Dan
-Cross, Cody Cutler, Mike CAT, Tej Chajed, Asami Doi,Wenyang Duan,
-echtwerner, eyalz800, Nelson Elhage, Saar Ettinger, Alice Ferrazzi,
-Nathaniel Filardo, flespark, Peter Froehlich, Yakir Goaron, Shivam
-Handa, Matt Harvey, Bryan Henry, jaichenhengjie, Jim Huang, Matúš
-Jókay, John Jolly, Alexander Kapshuk, Anders Kaseorg, kehao95,
-Wolfgang Keller, Jungwoo Kim, Jonathan Kimmitt, Eddie Kohler, Vadim
-Kolontsov, Austin Liew, l0stman, Pavan Maddamsetti, Imbar Marinescu,
-Yandong Mao, Matan Shabtay, Hitoshi Mitake, Carmi Merimovich,
-mes900903, Mark Morrissey, mtasm, Joel Nider, Hayato Ohhashi,
-OptimisticSide, papparapa, phosphagos, Harry Porter, Greg Price, Zheng
-qhuo, Quancheng, RayAndrew, Jude Rich, segfault, Ayan Shafqat, Eldar
-Sehayek, Yongming Shen, Fumiya Shigemitsu, snoire, Taojie, Cam Tenny,
-tyfkda, Warren Toomey, Stephen Tu, Alissa Tung, Rafael Ubal, unicornx,
-Amane Uehara, Pablo Ventura, Luc Videau, Xi Wang, WaheedHafez, Keiichi
-Watanabe, Lucas Wolf, Nicolas Wolovick, wxdao, Grant Wu, x653, Andy
-Zhang, Jindong Zhang, Icenowy Zheng, ZhUyU1997, and Zou Chang Wei.
+5. Modificamos el PTE en el archivo `kernel/vm.c` para activar/desactivar los permisos de lectura en las paginas de usuario.
+6. Manejamos traps y la deteccion de fallos en la lectura modificando `kernel/trap.c` para verificar PTE_R
 
-ERROR REPORTS
+Una vez que tenemos toda la logica implementada, ahora crearemos el programa de prueba
 
-Please send errors and suggestions to Frans Kaashoek and Robert Morris
-(kaashoek,rtm@mit.edu).  The main purpose of xv6 is as a teaching
-operating system for MIT's 6.1810, so we are more interested in
-simplifications and clarifications than new features.
+7. Creamos el arhivo `user/rdprotect_test.c`
+8. Añadimos la función en `UPROGS=` que esta en el `Makefile`
 
-BUILDING AND RUNNING XV6
+Ahora añadimos el test de restauración:
 
-You will need a RISC-V "newlib" tool chain from
-https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
-riscv64-softmmu.  Once they are installed, and in your shell
-search path, you can run "make qemu".
+9. Creamos el archivo `user/unprotect_test.c`
+10. Añadimos la función en `UPROGS=` que esta en el `Makefile`
+
+## 2. Compilacion y ejecución:
+Compilacion del Kernel:
+`make clean` -> Permite limpiar los archivos
+`make qemu` -> Inicia el sistema operativo
+
+Ejecución:
+`$ rdprotect_test` -> Programa para probar protección
+`$ unprotect_test` -> Programa para probar resturación
+
+Cierre de xv6:
+`Ctrl + A`
+`X`
+
+## 3. Prompt de ChatGPT (IA usada como asesoramiento):
+
+https://chatgpt.com/share/6924f114-9144-8004-b8c7-5abc7475e5b9
+
+## 4. Problemas encontrados y soluciones:
+Gracias al uso de la IA fue más fácil sortear las dificultades, pero al mismo tiempo trae consigo nuevos desafíos:
+- El versionamiento de xv6 para la IA es diferente con el que estamos trabajando, por lo que considera archivos que en realidad no existen.
+Solución: ser mas especifico con los promps, tras entender de que estamos hablando se vuelve una herramienta util para resolver.
+
+- El uso de la IA entiende la tarea de una forma distinta, fragmentándola en partes, si uno no comprende qué es lo que está haciendo, podría considerar la tarea finalizada cuando en realidad aún faltan pasos por realizar.
+Solución: Utilizar la IA como una herramienta de apoyo y no como un sustituto para realizar la tarea, ya que al final del día quien toma la decisión final es uno y no la computadora.
+
+- Una dificultad menor fue el nombre de los archivos, ya que se permite como máximo 14 caracteres y, al crear el segundo programa de prueba, se excedía este límite y se producía un error.
+Solución: Cambiar el nombre reduciéndolo aún más. Puede ser un poco menos claro, pero cumple con el formato.
+
+## 5. Confirmación de funcionamiento:

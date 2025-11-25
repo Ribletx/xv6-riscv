@@ -68,14 +68,46 @@ usertrap(void)
     syscall();
   } else if((which_dev = devintr()) != 0){
     // ok
-  } else if((r_scause() == 15 || r_scause() == 13) &&
-            vmfault(p->pagetable, r_stval(), (r_scause() == 13)? 1 : 0) != 0) {
-    // page fault on lazily-allocated page
+  } else if (r_scause() == 15 || r_scause() == 13) {
+    // scause 15 = load access fault, 13 = store/amo access fault (según tu versión)
+    uint64 fault_va = r_stval();
+    int handled = 0;
+
+    // Primero: detectar si es una lectura protegida por PTE_R = 0
+    if (r_scause() == 15) { // load access fault
+      uint64 a = PGROUNDDOWN(fault_va);
+      pte_t *pte = walk(p->pagetable, a, 0);
+      if (pte != 0 && (*pte & PTE_V) && (*pte & PTE_U) && ((*pte & PTE_R) == 0)) {
+        // La página está mapeada en espacio de usuario y tiene PTE_R deshabilitado:
+        // fallo por intento de lectura a región "sin lectura" → matar proceso.
+        printf("usertrap(): load access fault — lectura protegida pid=%d\n", p->pid);
+        printf("            sepc=0x%lx stval=0x%lx va(page) = 0x%lx\n", r_sepc(), fault_va, a);
+        setkilled(p);
+        handled = 1;
+      }
+    }
+
+    // Si no fue un fallo por 'lectura protegida', dejamos que vmfault intente manejarlo
+    // (por ejemplo, páginas lazy-allocated). vmfault debe devolver != 0 si logró manejar.
+    if (!handled) {
+      if (vmfault(p->pagetable, fault_va, (r_scause() == 13) ? 1 : 0) != 0) {
+        // vmfault manejó el fault (por ejemplo asignó página lazy). seguimos normalmente.
+        handled = 1;
+      }
+    }
+
+    if (!handled) {
+      // Ni protected-read ni vmfault pudieron manejar => comportamiento de fallo
+      printf("usertrap(): unhandled page fault scause=0x%lx pid=%d\n", r_scause(), p->pid);
+      printf("            sepc=0x%lx stval=0x%lx\n", r_sepc(), fault_va);
+      setkilled(p);
+    }
   } else {
     printf("usertrap(): unexpected scause 0x%lx pid=%d\n", r_scause(), p->pid);
     printf("            sepc=0x%lx stval=0x%lx\n", r_sepc(), r_stval());
     setkilled(p);
   }
+
 
   if(killed(p))
     kexit(-1);
